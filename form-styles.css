@@ -3,25 +3,21 @@
 }
 
 .FormError {
-  position: absolute;
-      background: #151515;
-      color: #e8e8e8;
-      padding: 6px 8px;
-      bottom: -25px;
-      left: 0px;
-      z-index: 9999;
-      border-radius: 1px;
-      font-size: 14px;
-}
-
-/*#phoneError {
-  position: absolute;
-  background: #151515;
-  color: #e8e8e8;
-  padding: 3px 8px;
-  bottom: -35px;
-  left: 0px;
   z-index: 9999;
   font-weight: bold;
   border-radius: 3px;
-}*/
+  font-size: 15px;
+  position: relative;
+  top: -8px;
+  padding: 2px 8px;
+  background: #151515;
+  color: #f9f9f9;
+  display: inline-block;
+  background-image: url('./attention.svg');
+  background-position: 5% center;
+  background-repeat: no-repeat;
+  text-align: left;
+  padding-left: 35px;
+  background-size: 15px;
+  padding-top: 5px;
+}

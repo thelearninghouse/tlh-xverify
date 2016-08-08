@@ -364,7 +364,7 @@ function emailChangeHandler(event){
 
 	// tlh
 	if (!$('#emailError').length){
-		$(tClassName).after('<div class="FormError" class="test" id="emailError"></div>');
+		$(tClassName).after('<div class="FormError" id="emailError"></div>');
     	}
 
 	$(parentForm).attr('state','proccess');
