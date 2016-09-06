@@ -37,7 +37,7 @@ function inject_styles_into_head() {
   }
   .FormError {
     z-index: 9999;
-    font-weight: bold;
+    font-weight: normal;
     border-radius: 3px;
     font-size: 15px;
     background: #151515;
@@ -52,12 +52,17 @@ function inject_styles_into_head() {
     padding-top: 5px;
     padding: 8px 10px 8px 35px;
     position: relative;
+
   }";
 
   $options_array = get_option( 'tlh_xverify_settings_option_name');
+
+  $tlhx_font_weight = $options_array['tlhx_font_weight'];
   $tlhx_custom_css = $options_array['tlhx_custom_css'];
 
   $output = $base_styles . ' ' . $tlhx_custom_css;
+
+
   echo '<style>' . $output . '</style>';
 }
 add_action('wp_head','inject_styles_into_head');
@@ -145,21 +150,29 @@ class TLHXVerifySettings {
 			'tlh_xverify_settings_setting_section' // section
 		);
 
-    add_settings_field(
-      'error_message_background_color', // id
-      'Error Message Background Color', // title
-      array( $this, 'error_message_background_color_callback' ), // callback
-      'tlh-xverify-settings-admin', // page
-      'tlh_xverify_settings_setting_section' // section
-    );
-
-		add_settings_field(
-			'select_field_1_1', // id
-			'Select Field 1', // title
-			array( $this, 'select_field_1_1_callback' ), // callback
-			'tlh-xverify-settings-admin', // page
-			'tlh_xverify_settings_setting_section' // section
-		);
+    // add_settings_field(
+		// 	'tlhx_font_weight', // id
+		// 	'Use Font Weight Instead of Bold?', // title
+		// 	array( $this, 'tlhx_font_weight_callback' ), // callback
+		// 	'tlh-xverify-settings-admin', // page
+		// 	'tlh_xverify_settings_setting_section' // section
+		// );
+    //
+    // add_settings_field(
+    //   'error_message_background_color', // id
+    //   'Error Message Background Color', // title
+    //   array( $this, 'error_message_background_color_callback' ), // callback
+    //   'tlh-xverify-settings-admin', // page
+    //   'tlh_xverify_settings_setting_section' // section
+    // );
+    //
+		// add_settings_field(
+		// 	'select_field_1_1', // id
+		// 	'Select Field 1', // title
+		// 	array( $this, 'select_field_1_1_callback' ), // callback
+		// 	'tlh-xverify-settings-admin', // page
+		// 	'tlh_xverify_settings_setting_section' // section
+		// );
 	}
 
 	public function tlh_xverify_settings_sanitize($input) {
@@ -168,14 +181,18 @@ class TLHXVerifySettings {
 			$sanitary_values['tlhx_custom_css'] = sanitize_text_field( $input['tlhx_custom_css'] );
 		}
 
-    if ( isset( $input['error_message_background_color'] ) ) {
-      $sanitary_values['error_message_background_color'] =  $input['error_message_background_color'];
-    }
-
-
-		if ( isset( $input['select_field_1_1'] ) ) {
-			$sanitary_values['select_field_1_1'] = $input['select_field_1_1'];
-		}
+    // if ( isset( $input['tlhx_font_weight'] ) ) {
+		// 	$sanitary_values['tlhx_font_weight'] = sanitize_text_field( $input['tlhx_font_weight'] );
+		// }
+    //
+    // if ( isset( $input['error_message_background_color'] ) ) {
+    //   $sanitary_values['error_message_background_color'] =  $input['error_message_background_color'];
+    // }
+    //
+    //
+		// if ( isset( $input['select_field_1_1'] ) ) {
+		// 	$sanitary_values['select_field_1_1'] = $input['select_field_1_1'];
+		// }
 
 		return $sanitary_values;
 	}
@@ -187,28 +204,11 @@ class TLHXVerifySettings {
 	public function tlhx_custom_css_callback() {
     $test_value = isset( $this->tlh_xverify_settings_options['tlhx_custom_css'] ) ? esc_attr( $this->tlh_xverify_settings_options['tlhx_custom_css']) : '';
     ?>
-			<textarea class="regular-text" type="text" name="tlh_xverify_settings_option_name[tlhx_custom_css]" id="tlhx_custom_css" value="<?php echo $test_value; ?>"><?php echo $test_value; ?></textarea> <?php
+			<textarea class="regular-text" rows="6" cols="50" type="text" style="resize:none;" name="tlh_xverify_settings_option_name[tlhx_custom_css]" id="tlhx_custom_css" value="<?php echo $test_value; ?>"><?php echo $test_value; ?></textarea> <?php
 
 	}
 
 
-
-
-  public function error_message_background_color_callback() {
-    printf(
-      '<input class="background-color" type="color" name="tlh_xverify_settings_option_name[error_message_background_color]" id="error_message_background_color" value="%s">',
-      isset( $this->tlh_xverify_settings_options['error_message_background_color'] ) ? esc_attr( $this->tlh_xverify_settings_options['error_message_background_color']) : ''
-    );
-  }
-
-	public function select_field_1_1_callback() {
-		?> <select name="tlh_xverify_settings_option_name[select_field_1_1]" id="select_field_1_1">
-			<?php $selected = (isset( $this->tlh_xverify_settings_options['select_field_1_1'] ) && $this->tlh_xverify_settings_options['select_field_1_1'] === 'option-one') ? 'selected' : '' ; ?>
-			<option value="option-one" <?php echo $selected; ?>>Option One</option>
-			<?php $selected = (isset( $this->tlh_xverify_settings_options['select_field_1_1'] ) && $this->tlh_xverify_settings_options['select_field_1_1'] === 'option-two') ? 'selected' : '' ; ?>
-			<option value="option-two" <?php echo $selected; ?>>Option Two</option>
-		</select> <?php
-	}
 
 }
 if ( is_admin() )
