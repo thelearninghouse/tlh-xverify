@@ -1,12 +1,14 @@
 <?php
 /*
  * Plugin Name: TLH xVerify
- * Plugin URI: https://github.com/thelearninghouse/lp-builder
+ * Plugin URI: https://github.com/thelearninghouse/tlh-xverify
  * Description: This plugin incorperates xVerify Form Validation
  * Version: 1.0
  * Author: David Royer - The Learning House
  * Author URI: http://www.learninghouse.com
  * License: GPL2
+ GitHub Plugin URI: https://github.com/thelearninghouse/tlh-xverify
+  GitHub Branch: master
  */
 
 // Enqueue Scripts
