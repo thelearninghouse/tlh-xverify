@@ -1,14 +1,12 @@
 <?php
 /*
  * Plugin Name: TLH xVerify
- * Plugin URI: https://github.com/thelearninghouse/tlh-xverify
+ * Plugin URI: https://github.com/thelearninghouse/lp-builder
  * Description: This plugin incorperates xVerify Form Validation
- * Version: 1.2
+ * Version: 1.0
  * Author: David Royer - The Learning House
  * Author URI: http://www.learninghouse.com
  * License: GPL2
- GitHub Plugin URI: https://github.com/thelearninghouse/tlh-xverify
-  GitHub Branch: master
  */
 
 // Enqueue Scripts
@@ -21,6 +19,9 @@
 function tlh_enqueue_xverify_scripts() {
   wp_register_script('tlh-xverify-js', plugins_url( 'tlh-xverify/scripts.js' , dirname(__FILE__) ) );
   wp_enqueue_script('tlh-xverify-js');
+
+  wp_register_script('tlh-zip-js', plugins_url( 'tlh-xverify/zip.js' , dirname(__FILE__) ) );
+   wp_enqueue_script('tlh-zip-js');
 
   // wp_register_style('tlh-xverify-css', plugins_url( 'tlh-xverify/form-styles.css' , dirname(__FILE__) ) );
   // wp_enqueue_style('tlh-xverify-css');
@@ -54,7 +55,15 @@ function inject_styles_into_head() {
     padding-top: 5px;
     padding: 8px 10px 8px 35px;
     position: relative;
-
+	}
+	input[type=text].success {
+	color: #444;
+    border-color: #fff;
+    border-width: 2px;
+    border-style: solid;
+    border-spacing: inherit;
+    border-radius: 0;
+	}
   }";
 
   $options_array = get_option( 'tlh_xverify_settings_option_name');
