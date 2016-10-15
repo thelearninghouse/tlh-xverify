@@ -3,7 +3,7 @@
  * Plugin Name: TLH xVerify
  * Plugin URI: https://github.com/thelearninghouse/tlh-xverify
  * Description: This plugin incorperates xVerify Form Validation
- * Version: 1.1
+ * Version: 1.2
  * Author: David Royer - The Learning House
  * Author URI: http://www.learninghouse.com
  * License: GPL2
