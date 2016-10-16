@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Plugin Name: TLH xVerify
  * Plugin URI: https://github.com/thelearninghouse/tlh-xverify
  * Description: This plugin incorperates xVerify Form Validation
